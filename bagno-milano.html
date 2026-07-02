@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bagno Milano — Marina di Massa · dal 1950</title>
+<meta name="description" content="Bagno Milano, stabilimento balneare a Marina di Massa dal 1950. Relax e divertimento ai piedi delle Alpi Apuane: animazione, mini club, spiaggia attrezzata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blu:#14577F;          /* blu riviera */
+  --blu-scuro:#0A3550;    /* fondale */
+  --azzurro:#7FB6D3;      /* foschia sul mare */
+  --marmo:#F8F6F1;        /* bianco Apuane */
+  --sabbia:#EBDDBC;       /* battigia */
+  --corallo:#E8542F;      /* accento sole */
+  --inchiostro:#152430;
+  --riga:44px;            /* larghezza riga tenda */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Karla',sans-serif;
+  color:var(--inchiostro);
+  background:var(--marmo);
+  line-height:1.6;
+}
+h1,h2,h3,.display{
+  font-family:'Big Shoulders Display',sans-serif;
+  line-height:1;
+  text-transform:uppercase;
+}
+img{max-width:100%;display:block}
+a{color:var(--blu)}
+:focus-visible{outline:3px solid var(--corallo);outline-offset:3px;border-radius:2px}
+
+/* ---------- Firma: bordo a tenda smerlata ---------- */
+.awning{
+  height:54px;
+  background:repeating-linear-gradient(90deg,var(--blu) 0 var(--riga),#fff var(--riga) calc(var(--riga)*2));
+  -webkit-mask:
+    linear-gradient(#000,#000) top / 100% calc(100% - 20px) no-repeat,
+    radial-gradient(farthest-side,#000 97%,#0000) bottom / calc(var(--riga)) 20px repeat-x;
+  mask:
+    linear-gradient(#000,#000) top / 100% calc(100% - 20px) no-repeat,
+    radial-gradient(farthest-side,#000 97%,#0000) bottom / calc(var(--riga)) 20px repeat-x;
+}
+.awning.inversa{transform:scaleY(-1)}
+
+/* ---------- Header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:var(--marmo);
+  border-bottom:1px solid rgba(20,87,127,.15);
+}
+.nav-wrap{
+  max-width:1100px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{
+  font-family:'Big Shoulders Display',sans-serif;
+  font-weight:800;font-size:1.5rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--blu-scuro);text-decoration:none;
+  display:flex;align-items:baseline;gap:10px;
+}
+.brand small{
+  font-family:'Karla',sans-serif;font-weight:400;font-size:.7rem;
+  letter-spacing:.18em;color:var(--corallo);text-transform:uppercase;
+}
+nav ul{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
+nav a{
+  text-decoration:none;color:var(--inchiostro);font-weight:500;
+  font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;
+}
+nav a:hover{color:var(--corallo)}
+.nav-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--blu-scuro);cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(circle 340px at 78% 118px, rgba(255,214,150,.55), transparent 70%),
+    linear-gradient(180deg,#BFDCEC 0%, #8FC0DA 46%, var(--blu) 46.2%, var(--blu-scuro) 100%);
+  color:#fff;
+  overflow:hidden;
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;
+  padding:96px 24px 150px;
+  text-align:center;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--blu-scuro);
+  border:1.5px solid var(--blu-scuro);
+  padding:6px 18px;border-radius:999px;
+  margin-bottom:26px;background:rgba(255,255,255,.55);
+}
+.hero h1{
+  font-size:clamp(4rem,13vw,10.5rem);
+  font-weight:800;letter-spacing:.02em;
+  color:#fff;
+  text-shadow:0 4px 0 rgba(10,53,80,.35);
+}
+.hero .sotto{
+  max-width:560px;margin:22px auto 34px;
+  font-size:1.1rem;color:#EAF4FA;
+}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;font-size:.85rem;
+  padding:14px 30px;border-radius:999px;transition:transform .15s ease, background .15s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-pieno{background:var(--corallo);color:#fff}
+.btn-pieno:hover{background:#c94324}
+.btn-vuoto{border:2px solid #fff;color:#fff}
+.btn-vuoto:hover{background:rgba(255,255,255,.14)}
+
+/* fila di ombrelloni sul bordo del mare */
+.ombrelloni{
+  position:absolute;left:0;right:0;bottom:0;height:110px;
+  display:flex;justify-content:center;gap:clamp(24px,6vw,70px);
+  align-items:flex-end;pointer-events:none;
+}
+.ombrelloni svg{width:clamp(64px,9vw,104px);height:auto;opacity:.95}
+
+/* ---------- Sezioni ---------- */
+section{padding:88px 24px}
+.contenuto{max-width:1100px;margin:0 auto}
+.titolo-sez{
+  font-size:clamp(2.4rem,6vw,4rem);font-weight:700;color:var(--blu-scuro);
+  margin-bottom:8px;
+}
+.sottotitolo{
+  font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--corallo);font-weight:700;margin-bottom:14px;
+}
+.lead{max-width:640px;font-size:1.08rem;color:#3A4C58}
+
+/* Storia */
+.storia{background:var(--marmo)}
+.storia-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.anno{
+  font-family:'Big Shoulders Display',sans-serif;font-weight:800;
+  font-size:clamp(6rem,14vw,11rem);color:var(--sabbia);line-height:.85;
+  -webkit-text-stroke:2px var(--blu);text-align:center;
+}
+.anno span{display:block;font-size:1rem;-webkit-text-stroke:0;color:var(--blu);
+  font-family:'Karla',sans-serif;letter-spacing:.3em;font-weight:700;margin-top:14px}
+
+/* Servizi */
+.servizi{background:var(--blu);color:#fff}
+.servizi .titolo-sez{color:#fff}
+.servizi .sottotitolo{color:var(--sabbia)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:44px}
+.card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:14px;padding:30px 26px;
+  transition:transform .18s ease, background .18s ease;
+}
+.card:hover{transform:translateY(-4px);background:rgba(255,255,255,.13)}
+.card .icona{font-size:2rem;margin-bottom:14px}
+.card h3{font-size:1.35rem;letter-spacing:.04em;margin-bottom:8px;font-weight:700}
+.card p{font-size:.95rem;color:#DCEBF4}
+
+/* Dintorni: segnavia da lido */
+.dintorni{background:var(--marmo)}
+.segnavia{margin-top:44px;display:grid;gap:0;border-top:2px solid var(--blu)}
+.meta{
+  display:flex;justify-content:space-between;align-items:baseline;gap:18px;
+  padding:18px 6px;border-bottom:1px dashed rgba(20,87,127,.4);
+}
+.meta .nome{
+  font-family:'Big Shoulders Display',sans-serif;font-weight:700;
+  font-size:clamp(1.3rem,3vw,1.9rem);text-transform:uppercase;letter-spacing:.03em;
+  color:var(--blu-scuro);
+}
+.meta .come{flex:1;border-bottom:2px dotted rgba(20,87,127,.35);transform:translateY(-6px)}
+.meta .dist{
+  font-weight:700;color:var(--corallo);white-space:nowrap;
+  font-size:.95rem;letter-spacing:.06em;
+}
+.nota-cave{
+  margin-top:36px;padding:26px 30px;border-radius:14px;
+  background:#fff;border:1px solid rgba(20,87,127,.18);
+  display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+}
+.nota-cave strong{font-family:'Big Shoulders Display',sans-serif;font-size:1.3rem;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--blu-scuro)}
+
+/* Tariffe / info */
+.info{background:var(--sabbia)}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+.info-box{
+  background:var(--marmo);border-radius:14px;padding:30px 26px;
+  border:1px solid rgba(20,87,127,.15);
+}
+.info-box h3{font-size:1.4rem;color:var(--blu-scuro);margin-bottom:10px;letter-spacing:.04em}
+.info-box p{font-size:.98rem;color:#3A4C58;margin-bottom:14px}
+.link-freccia{font-weight:700;text-decoration:none;letter-spacing:.05em}
+.link-freccia:hover{color:var(--corallo)}
+
+/* Contatti / footer */
+footer{background:var(--blu-scuro);color:#CFE3EF}
+.footer-grid{
+  max-width:1100px;margin:0 auto;padding:72px 24px 40px;
+  display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;
+}
+footer h3{color:#fff;font-size:1.6rem;letter-spacing:.05em;margin-bottom:16px}
+footer a{color:#fff}
+footer a:hover{color:var(--sabbia)}
+.tel{
+  font-family:'Big Shoulders Display',sans-serif;font-weight:700;
+  font-size:2rem;letter-spacing:.05em;color:#fff;text-decoration:none;display:inline-block;margin-top:6px;
+}
+.footer-links{list-style:none;display:grid;gap:10px}
+.footer-links a{text-decoration:none;font-size:.95rem;letter-spacing:.04em}
+.fb{
+  display:inline-flex;align-items:center;gap:10px;margin-top:16px;
+  background:#fff;color:var(--blu-scuro);text-decoration:none;font-weight:700;
+  padding:12px 22px;border-radius:999px;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.fb:hover{background:var(--sabbia);color:var(--blu-scuro)}
+.colophon{
+  border-top:1px solid rgba(255,255,255,.15);
+  padding:22px 24px;text-align:center;font-size:.82rem;color:#8FB3C8;
+}
+
+/* Reveal */
+.rivela{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+.rivela.visibile{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rivela{opacity:1;transform:none;transition:none}
+  .btn,.card{transition:none}
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:840px){
+  .storia-grid{grid-template-columns:1fr;gap:36px}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .nav-toggle{display:block}
+  nav{display:none;width:100%}
+  nav.aperto{display:block}
+  nav ul{flex-direction:column;gap:14px;padding:12px 0 6px}
+  .nav-wrap{flex-wrap:wrap}
+  .meta{flex-wrap:wrap}
+  .meta .come{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a class="brand" href="#home">Bagno Milano <small>dal 1950</small></a>
+    <button class="nav-toggle" aria-label="Apri il menu" aria-expanded="false" onclick="toggleNav(this)">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#dintorni">Dove siamo</a></li>
+        <li><a href="#tariffe">Tariffe</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Marina di Massa · Toscana</span>
+      <h1>Bagno Milano</h1>
+      <p class="sotto">Relax e divertimento ai piedi delle Alpi Apuane. La nostra famiglia vi accoglie sulla stessa spiaggia dagli anni&nbsp;’50.</p>
+      <div class="btns">
+        <a class="btn btn-pieno" href="#tariffe">Tariffe e info</a>
+        <a class="btn btn-vuoto" href="#contatti">Contattaci</a>
+      </div>
+    </div>
+    <div class="ombrelloni" aria-hidden="true">
+      <!-- ombrellone SVG ripetuto -->
+      <svg viewBox="0 0 100 110"><g><line x1="50" y1="34" x2="50" y2="108" stroke="#F8F6F1" stroke-width="4"/><path d="M6 40 Q50 -6 94 40 L6 40 Z" fill="#F8F6F1"/><path d="M28 40 Q50 6 72 40 Z" fill="#E8542F"/></g></svg>
+      <svg viewBox="0 0 100 110"><g><line x1="50" y1="34" x2="50" y2="108" stroke="#F8F6F1" stroke-width="4"/><path d="M6 40 Q50 -6 94 40 L6 40 Z" fill="#E8542F"/><path d="M28 40 Q50 6 72 40 Z" fill="#F8F6F1"/></g></svg>
+      <svg viewBox="0 0 100 110"><g><line x1="50" y1="34" x2="50" y2="108" stroke="#F8F6F1" stroke-width="4"/><path d="M6 40 Q50 -6 94 40 L6 40 Z" fill="#F8F6F1"/><path d="M28 40 Q50 6 72 40 Z" fill="#14577F"/></g></svg>
+      <svg viewBox="0 0 100 110"><g><line x1="50" y1="34" x2="50" y2="108" stroke="#F8F6F1" stroke-width="4"/><path d="M6 40 Q50 -6 94 40 L6 40 Z" fill="#E8542F"/><path d="M28 40 Q50 6 72 40 Z" fill="#F8F6F1"/></g></svg>
+      <svg viewBox="0 0 100 110"><g><line x1="50" y1="34" x2="50" y2="108" stroke="#F8F6F1" stroke-width="4"/><path d="M6 40 Q50 -6 94 40 L6 40 Z" fill="#F8F6F1"/><path d="M28 40 Q50 6 72 40 Z" fill="#E8542F"/></g></svg>
+    </div>
+  </div>
+  <div class="awning"></div>
+
+  <!-- STORIA -->
+  <section class="storia">
+    <div class="contenuto storia-grid">
+      <div class="rivela">
+        <p class="sottotitolo">La nostra storia</p>
+        <h2 class="titolo-sez">Una famiglia, una spiaggia</h2>
+        <p class="lead">Dagli anni&nbsp;’50 la nostra famiglia gestisce il Bagno Milano di Marina di Massa. Da allora cerchiamo ogni giorno di offrire il miglior servizio, perché la vostra vacanza sia al tempo stesso rilassante e frizzante.</p>
+        <p class="lead" style="margin-top:16px">Ogni anno ci rinnoviamo con nuove proposte per il vostro svago: équipe di animazione in spiaggia, mini club per i più piccoli, giochi e tanto altro.</p>
+      </div>
+      <div class="anno rivela">1950<span>· da allora, sempre qui ·</span></div>
+    </div>
+  </section>
+
+  <div class="awning inversa"></div>
+
+  <!-- SERVIZI -->
+  <section class="servizi" id="servizi">
+    <div class="contenuto">
+      <p class="sottotitolo rivela">In spiaggia</p>
+      <h2 class="titolo-sez rivela">I nostri servizi</h2>
+      <div class="cards">
+        <div class="card rivela">
+          <div class="icona">⛱️</div>
+          <h3>Spiaggia attrezzata</h3>
+          <p>Ombrelloni e tende sul Lungomare di Ponente, con tutto il necessario per una giornata di mare in comodità.</p>
+        </div>
+        <div class="card rivela">
+          <div class="icona">🎉</div>
+          <h3>Animazione</h3>
+          <p>Un'équipe di animazione in spiaggia con attività, tornei e giochi per rendere frizzante la vostra vacanza.</p>
+        </div>
+        <div class="card rivela">
+          <div class="icona">🧒</div>
+          <h3>Mini club</h3>
+          <p>Uno spazio dedicato ai più piccoli, con giochi e attività seguite dal nostro staff: i bambini si divertono, voi vi rilassate.</p>
+        </div>
+        <div class="card rivela">
+          <div class="icona">♿</div>
+          <h3>Accessibilità</h3>
+          <p>Lo stabilimento è attento all'accessibilità. <a href="https://www.bagnomilano.net/accessibilita.pdf" target="_blank" rel="noopener" style="color:var(--sabbia)">Scarica la scheda informativa (PDF)</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="awning"></div>
+
+  <!-- DINTORNI -->
+  <section class="dintorni" id="dintorni">
+    <div class="contenuto">
+      <p class="sottotitolo rivela">Dove siamo</p>
+      <h2 class="titolo-sez rivela">Tra il mare e le Apuane</h2>
+      <p class="lead rivela">Siamo a Marina di Massa, nel nord della Toscana: una posizione perfetta per esplorare la costa e l'entroterra. Il pontile, a soli 500&nbsp;metri da noi, è il punto di partenza dei traghetti per le Cinque&nbsp;Terre, Lerici e Portovenere.</p>
+
+      <div class="segnavia rivela">
+        <div class="meta"><span class="nome">Cinque Terre · Lerici · Portovenere</span><span class="come"></span><span class="dist">in traghetto dal pontile (500 m)</span></div>
+        <div class="meta"><span class="nome">Forte dei Marmi &amp; Viareggio</span><span class="come"></span><span class="dist">in bici sul lungomare</span></div>
+        <div class="meta"><span class="nome">Carrara e le cave di marmo</span><span class="come"></span><span class="dist">a pochi km</span></div>
+        <div class="meta"><span class="nome">Alpi Apuane e Lunigiana</span><span class="come"></span><span class="dist">a due passi</span></div>
+        <div class="meta"><span class="nome">Lucca</span><span class="come"></span><span class="dist">35 km</span></div>
+        <div class="meta"><span class="nome">Pisa — Piazza dei Miracoli</span><span class="come"></span><span class="dist">45 km</span></div>
+        <div class="meta"><span class="nome">Livorno</span><span class="come"></span><span class="dist">70 km</span></div>
+        <div class="meta"><span class="nome">Firenze</span><span class="come"></span><span class="dist">110 km</span></div>
+      </div>
+
+      <div class="nota-cave rivela">
+        <strong>Il tour delle cave di marmo</strong>
+        <p style="flex:1;min-width:240px">È l'itinerario più percorso della zona di Massa-Carrara: secoli di estrazione hanno lasciato su queste montagne un paesaggio unico al mondo, colmo di storia e fascino. Sulle Apuane trovate anche palestre di roccia e sentieri impegnativi; in Lunigiana, i castelli.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="awning inversa"></div>
+
+  <!-- TARIFFE / INFO -->
+  <section class="info" id="tariffe">
+    <div class="contenuto">
+      <p class="sottotitolo rivela">Pianifica la giornata</p>
+      <h2 class="titolo-sez rivela">Tariffe e informazioni</h2>
+      <div class="info-grid">
+        <div class="info-box rivela">
+          <h3>Tariffe</h3>
+          <p>Ombrelloni, tende e lettini: chiamaci per conoscere disponibilità e prezzi di stagione, oppure passa a trovarci sul lungomare.</p>
+          <a class="link-freccia" href="tel:0585241493">Chiama lo 0585 241493 →</a>
+        </div>
+        <div class="info-box rivela">
+          <h3>Meteo</h3>
+          <p>Controlla le previsioni prima di partire per una giornata di mare a Marina di Massa.</p>
+          <a class="link-freccia" href="https://www.bagnomilano.net/index.php/meteo" target="_blank" rel="noopener">Vedi il meteo →</a>
+        </div>
+        <div class="info-box rivela">
+          <h3>Webcam</h3>
+          <p>Dai un'occhiata in diretta alla spiaggia: la nostra webcam è puntata sul mare.</p>
+          <a class="link-freccia" href="https://www.bagnomilano.net/index.php/webcam-milano" target="_blank" rel="noopener">Guarda la webcam →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="awning"></div>
+</main>
+
+<!-- CONTATTI / FOOTER -->
+<footer id="contatti">
+  <div class="footer-grid">
+    <div>
+      <h3>Bagno Milano</h3>
+      <p>Viale Lungomare di Ponente<br>54037 Marina di Massa (MS)</p>
+      <a class="tel" href="tel:0585241493">0585 241493</a><br>
+      <a class="fb" href="https://www.facebook.com/bagnomilanomassa" target="_blank" rel="noopener">ƒ&nbsp; Seguici su Facebook</a>
+    </div>
+    <div>
+      <h3>Il sito</h3>
+      <ul class="footer-links">
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#dintorni">Dove siamo</a></li>
+        <li><a href="#tariffe">Tariffe</a></li>
+        <li><a href="https://www.bagnomilano.net/index.php/fotogallery" target="_blank" rel="noopener">Fotogallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Documenti</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.bagnomilano.net/privacy.pdf" target="_blank" rel="noopener">Privacy (PDF)</a></li>
+        <li><a href="https://www.bagnomilano.net/accessibilita.pdf" target="_blank" rel="noopener">Informazioni sull'accessibilità (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="colophon">© <span id="anno-corrente">2026</span> Bagno Milano — Marina di Massa</div>
+</footer>
+
+<script>
+function toggleNav(btn){
+  var menu=document.getElementById('menu');
+  var aperto=menu.classList.toggle('aperto');
+  btn.setAttribute('aria-expanded',aperto);
+}
+// chiudi il menu mobile dopo il clic su un link
+document.querySelectorAll('#menu a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('menu').classList.remove('aperto');
+    document.querySelector('.nav-toggle').setAttribute('aria-expanded','false');
+  });
+});
+// reveal on scroll (rispetta prefers-reduced-motion)
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+  var oss=new IntersectionObserver(function(voci){
+    voci.forEach(function(v){ if(v.isIntersecting){ v.target.classList.add('visibile'); oss.unobserve(v.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.rivela').forEach(function(el){ oss.observe(el); });
+}else{
+  document.querySelectorAll('.rivela').forEach(function(el){ el.classList.add('visibile'); });
+}
+document.getElementById('anno-corrente').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
